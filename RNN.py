@@ -10,13 +10,10 @@ def RNN(Cel, x, weights, biases, nHidden):
     x = tf.split(axis=0, num_or_size_splits=nSteps, value=x) 
 
     if Cel == 'rnn':
-        Cell = rnn.BasicRNNCell(nHidden)
     
     elif Cel == 'lstm':
-        Cell = rnn.BasicLSTMCell(nHidden)
     
     elif Cel == 'gru':
-        Cell = rnn.GRUCell(nHidden)
 
     outputs, states = rnn.static_rnn(Cell, x, dtype=tf.float32) 
     return tf.matmul(outputs[-1], weights) + biases
