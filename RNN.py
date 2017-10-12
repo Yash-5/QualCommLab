@@ -4,7 +4,7 @@ import numpy as np
 from tensorflow.examples.tutorials.mnist import input_data
 
 # Functions in which we can use RNN LSMT or GRU
-def RNN(Cel, x, weights, biases, nHidden):
+def RNN(Cel, x, weights, biases, nHidden, nInput, nSteps):
     x = tf.transpose(x, [1,0,2])
     x = tf.reshape(x, [-1, nInput])
     x = tf.split(axis=0, num_or_size_splits=nSteps, value=x) 
