@@ -15,6 +15,8 @@ def RNN(Cel, x, weights, biases, nHidden, nInput, nSteps):
     
     elif Cel == 'gru':
 
+    else:
+        raise ValueError("'Cel' should be from ('rnn', 'lstm', 'gru')")
     outputs, states = rnn.static_rnn(Cell, x, dtype=tf.float32) 
     return tf.matmul(outputs[-1], weights) + biases
 
@@ -33,14 +35,20 @@ def main():
     x = tf.placeholder('float', [None, nSteps, nInput])	
     y = tf.placeholder('float', [None, nClasses])
 
+    # Define weights and biases
+    # see documentation of tf.Variable for this
     weights = 
-
     biases = 
     
+    # get predictions from the RNN() function
     pred = 
     
+    # Define loss
+    # See softmax_cross_entropy_with_logits
+    # Try experimenting with different regularizations, tf has a bunch of them already implemented for you!
     cost = 
 
+    # Declare which optimizer to use and minimize the loss
     optimizer = 
 
     correctPred = 
